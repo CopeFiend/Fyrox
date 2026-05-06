@@ -311,12 +311,13 @@ impl<'b> MessageBoxBuilder<'b> {
             MessageBoxButtons::Ok => GridBuilder::new(
                 WidgetBuilder::new()
                     .with_child({
-                        text = TextBuilder::new(
-                            WidgetBuilder::new().with_margin(Thickness::uniform(4.0)),
-                        )
-                        .with_text(self.text)
-                        .with_wrap(WrapMode::Word)
-                        .build(ctx);
+                        text = TextBuilder::new()
+                            .with_widget_builder(
+                                WidgetBuilder::new().with_margin(Thickness::uniform(4.0)),
+                            )
+                            .with_text(self.text)
+                            .with_wrap(WrapMode::Word)
+                            .build(ctx);
                         text
                     })
                     .with_child({
@@ -340,7 +341,7 @@ impl<'b> MessageBoxBuilder<'b> {
             MessageBoxButtons::YesNo => GridBuilder::new(
                 WidgetBuilder::new()
                     .with_child({
-                        text = TextBuilder::new(WidgetBuilder::new())
+                        text = TextBuilder::new()
                             .with_text(self.text)
                             .with_wrap(WrapMode::Word)
                             .build(ctx);
@@ -384,7 +385,7 @@ impl<'b> MessageBoxBuilder<'b> {
             MessageBoxButtons::YesNoCancel => GridBuilder::new(
                 WidgetBuilder::new()
                     .with_child({
-                        text = TextBuilder::new(WidgetBuilder::new())
+                        text = TextBuilder::new()
                             .with_text(self.text)
                             .with_wrap(WrapMode::Word)
                             .build(ctx);
